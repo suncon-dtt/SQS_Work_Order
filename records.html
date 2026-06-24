@@ -22,6 +22,21 @@
       padding: 20px 24px;
     }
 
+    /* Add Work Order button */
+    .add-btn {
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.2s;
+    }
+    .add-btn:hover { background: #a93226; }
+
     /* Return button */
     .return-btn {
       display: inline-flex;
@@ -149,7 +164,10 @@
 
   <div class="page-wrap">
 
-    <button class="return-btn" onclick="window.location.href='main.html'">&#8592; Return</button>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <button class="return-btn" onclick="window.location.href='main.html'">&#8592; Return</button>
+      <button class="add-btn" onclick="window.location.href='index.html'">+ Add Work Order</button>
+    </div>
 
     <table>
       <thead>
