@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sunway Square – Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 24px;
+    }
+
+    .topbar-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .topbar-user .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #c0392b;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      line-height: 1.1;
+    }
+
+    .hero-title .sunway { color: #e74c3c; }
+    .hero-title .square { color: #fff; }
+
+    .hero-subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 3px;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* Cards */
+    .cards-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1.5px solid #aad4f5;
+      border-radius: 8px;
+      padding: 28px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+    }
+
+    .card img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    .card-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #222;
+      line-height: 1.4;
+    }
+
+    .card-btn {
+      font-size: 12px;
+      color: #2980b9;
+      font-weight: 600;
+      cursor: default;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+
+    @media (max-width: 600px) {
+      .cards-section { grid-template-columns: 1fr; }
+      .hero { height: 220px; }
+      .hero-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-user">
+      <div class="avatar">JT</div>
+      Jeffery Teo
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <img src="img/big-bg.ad4a2930.png" alt="Sunway Square" />
+    <div class="hero-overlay">
+      <div class="hero-title">
+        <span class="sunway">SUNWAY</span><span style="color:#fff"> | </span><span class="square">SQUARE</span>
+      </div>
+      <div class="hero-subtitle">A Vibrant Space For All</div>
+      <div class="hero-tagline">SUNWAY SQUARE SMART OPERATIONS CENTRE</div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-section">
+    <div class="card">
+      <img src="img/box2.d250578d.png" alt="Submit" />
+      <div class="card-title">Submit new access request</div>
+      <button class="card-btn">Access Request Form &gt;&gt;</button>
+    </div>
+    <div class="card">
+      <img src="img/box.75398ab0.png" alt="Records" />
+      <div class="card-title">View and manage all your forms</div>
+      <button class="card-btn">Access Request Records &gt;&gt;</button>
+    </div>
+    <div class="card">
+      <img src="img/box-1.7057a065.png" alt="Platforms" />
+      <div class="card-title">Other platforms</div>
+      <button class="card-btn">Please click &gt;&gt;</button>
+    </div>
+  </div>
+
+</body>
+</html>
