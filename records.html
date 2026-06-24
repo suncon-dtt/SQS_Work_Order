@@ -101,14 +101,79 @@
     }
 
     .details-btn {
-      border: 1px solid #ccc;
+      border: 1px solid #2980b9;
       border-radius: 3px;
       padding: 4px 12px;
       font-size: 12px;
-      color: #333;
+      color: #2980b9;
       background: #fff;
-      cursor: default;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.15s, color 0.15s;
     }
+    .details-btn:hover { background: #2980b9; color: #fff; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 8px;
+      width: 480px;
+      max-width: 90vw;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      background: #c0392b;
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 { font-size: 15px; font-weight: 700; }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .modal-label {
+      font-weight: 600;
+      color: #555;
+    }
+
+    .modal-value { color: #222; }
 
     /* Pagination */
     .pagination {
@@ -193,7 +258,7 @@
           <td>High</td>
           <td>24-06-2026 11:27:00</td>
           <td><span class="status-completed">Completed</span></td>
-          <td><button class="details-btn">Details</button></td>
+          <td><button class="details-btn" onclick="openModal('WO-240624-001','OT1','L15','Air-cond not working','High','24-06-2026 11:27:00','Completed','Unit air-conditioning unit on L15 has stopped functioning. Technician inspected and replaced faulty compressor. Unit restored to full operation.')">Details</button></td>
         </tr>
         <tr>
           <td>2</td>
@@ -204,7 +269,7 @@
           <td>Critical</td>
           <td>24-06-2026 13:45:00</td>
           <td><span class="status-inprogress">In Progress</span></td>
-          <td><button class="details-btn">Details</button></td>
+          <td><button class="details-btn" onclick="openModal('WO-240624-002','Basement','B02','Water leakage at ceiling','Critical','24-06-2026 13:45:00','In Progress','Water seeping through ceiling at B02 near parking bay 12. Plumbing team dispatched. Temporary containment in place while root cause investigation is ongoing.')">Details</button></td>
         </tr>
         <tr>
           <td>3</td>
@@ -215,11 +280,31 @@
           <td>Medium</td>
           <td>24-06-2026 14:10:00</td>
           <td><span class="status-pending">Pending</span></td>
-          <td><button class="details-btn">Details</button></td>
+          <td><button class="details-btn" onclick="openModal('WO-240624-003','PCR','L03','Lift door malfunction','Medium','24-06-2026 14:10:00','Pending','Lift door on L03 not closing properly. Reported by tenant. Awaiting lift maintenance contractor availability for inspection and repair.')">Details</button></td>
         </tr>
       </tbody>
     </table>
 
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Work Order Details</h3>
+        <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('active')">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-row"><span class="modal-label">Series Number</span><span class="modal-value" id="m-series"></span></div>
+        <div class="modal-row"><span class="modal-label">Affected Tenant / Area</span><span class="modal-value" id="m-tenant"></span></div>
+        <div class="modal-row"><span class="modal-label">Affected Location</span><span class="modal-value" id="m-location"></span></div>
+        <div class="modal-row"><span class="modal-label">Description</span><span class="modal-value" id="m-desc"></span></div>
+        <div class="modal-row"><span class="modal-label">Severity</span><span class="modal-value" id="m-severity"></span></div>
+        <div class="modal-row"><span class="modal-label">Submission Time</span><span class="modal-value" id="m-time"></span></div>
+        <div class="modal-row"><span class="modal-label">Status</span><span class="modal-value" id="m-status"></span></div>
+        <div class="modal-row"><span class="modal-label">Remarks</span><span class="modal-value" id="m-remarks"></span></div>
+      </div>
+    </div>
   </div>
 
   <div class="pagination">
@@ -233,5 +318,24 @@
     <div class="page-nav">&#8250;</div>
   </div>
 
+<script>
+  function openModal(series, tenant, location, desc, severity, time, status, remarks) {
+    document.getElementById('m-series').textContent = series;
+    document.getElementById('m-tenant').textContent = tenant;
+    document.getElementById('m-location').textContent = location;
+    document.getElementById('m-desc').textContent = desc;
+    document.getElementById('m-severity').textContent = severity;
+    document.getElementById('m-time').textContent = time;
+    document.getElementById('m-status').textContent = status;
+    document.getElementById('m-remarks').textContent = remarks;
+    document.getElementById('modalOverlay').classList.add('active');
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+  }
+</script>
 </body>
 </html>
