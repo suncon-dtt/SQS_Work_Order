@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Order Records</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-wrap {
+      flex: 1;
+      padding: 20px 24px;
+    }
+
+    /* Return button */
+    .return-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px 14px;
+      font-size: 13px;
+      color: #555;
+      background: #fff;
+      cursor: default;
+      margin-bottom: 20px;
+    }
+
+    .return-btn:hover { background: #f5f5f5; }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead tr {
+      border-bottom: 1.5px solid #e0e0e0;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+      color: #2980b9;
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    tbody tr:hover { background: #fafafa; }
+
+    tbody td {
+      padding: 12px 12px;
+      color: #333;
+      vertical-align: middle;
+    }
+
+    .status-completed {
+      color: #27ae60;
+      font-weight: 500;
+    }
+
+    .status-pending {
+      color: #e67e22;
+      font-weight: 500;
+    }
+
+    .status-inprogress {
+      color: #2980b9;
+      font-weight: 500;
+    }
+
+    .details-btn {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #333;
+      background: #fff;
+      cursor: default;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 20px 0;
+      font-size: 13px;
+      color: #555;
+      border-top: 1px solid #eee;
+      margin-top: auto;
+    }
+
+    .pagination .total { margin-right: 8px; }
+
+    .page-size {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .page-nav {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      color: #555;
+      font-size: 12px;
+    }
+
+    .page-num {
+      background: #c0392b;
+      color: #fff;
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <button class="return-btn" onclick="window.location.href='main.html'">&#8592; Return</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Series Number</th>
+          <th>Affected Tenant / Area</th>
+          <th>Affected Location</th>
+          <th>Description</th>
+          <th>Severity</th>
+          <th>Submission Time</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>WO-240624-001</td>
+          <td>OT1</td>
+          <td>L15</td>
+          <td>Air-cond not working</td>
+          <td>High</td>
+          <td>24-06-2026 11:27:00</td>
+          <td><span class="status-completed">Completed</span></td>
+          <td><button class="details-btn">Details</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>WO-240624-002</td>
+          <td>Basement</td>
+          <td>B02</td>
+          <td>Water leakage at ceiling</td>
+          <td>Critical</td>
+          <td>24-06-2026 13:45:00</td>
+          <td><span class="status-inprogress">In Progress</span></td>
+          <td><button class="details-btn">Details</button></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>WO-240624-003</td>
+          <td>PCR</td>
+          <td>L03</td>
+          <td>Lift door malfunction</td>
+          <td>Medium</td>
+          <td>24-06-2026 14:10:00</td>
+          <td><span class="status-pending">Pending</span></td>
+          <td><button class="details-btn">Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="pagination">
+    <span class="total">Total 3</span>
+    <select class="page-size">
+      <option>20/page</option>
+      <option>50/page</option>
+    </select>
+    <div class="page-nav">&#8249;</div>
+    <div class="page-num">1</div>
+    <div class="page-nav">&#8250;</div>
+  </div>
+
+</body>
+</html>
