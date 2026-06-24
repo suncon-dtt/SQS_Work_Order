@@ -121,12 +121,29 @@
       align-items: center;
       text-align: center;
       gap: 14px;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .card.clickable {
+      cursor: pointer;
+    }
+
+    .card.clickable:hover {
+      border-color: #2980b9;
+      box-shadow: 0 4px 16px rgba(41, 128, 185, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .card.clickable:active {
+      transform: translateY(0px);
+      box-shadow: 0 2px 6px rgba(41, 128, 185, 0.15);
     }
 
     .card img {
       width: 64px;
       height: 64px;
       object-fit: contain;
+      pointer-events: none;
     }
 
     .card-title {
@@ -134,16 +151,17 @@
       font-weight: 600;
       color: #222;
       line-height: 1.4;
+      pointer-events: none;
     }
 
     .card-btn {
       font-size: 12px;
       color: #2980b9;
       font-weight: 600;
-      cursor: default;
       border: none;
       background: none;
       padding: 0;
+      pointer-events: none;
     }
 
     @media (max-width: 600px) {
@@ -182,7 +200,7 @@
       <div class="card-title">Submit new access request</div>
       <button class="card-btn">Access Request Form &gt;&gt;</button>
     </div>
-    <div class="card" onclick="window.location.href='records.html'" style="cursor:pointer">
+    <div class="card clickable" onclick="window.location.href='records.html'">
       <img src="img/box.75398ab0.png" alt="Records" />
       <div class="card-title">View and manage all your forms</div>
       <button class="card-btn">Access Request Records &gt;&gt;</button>
